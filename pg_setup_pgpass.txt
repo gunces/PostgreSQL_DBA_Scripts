@@ -1,0 +1,10 @@
+# How to setup .pgpass
+
+CREATE ROLE xxx NOINHERIT NOREPLICATION PASSWORD 'verysecretpassword';
+
+vim ~/.pgpass
+<ip address>:<port>:*:xxx:md59a7b6491af4ef09b8379f9ab0c8572e7
+
+chmod 0600 ~/.pgpass
+
+# For testing use psql command with -w option
