@@ -6,3 +6,10 @@ pg_dump -p <port> -d <database name> -h <host> -Fc -Z8 > zipped.dump
 
 # restore dump file
 pg_restore -p <port> -d <database name> zipped.dump  -v
+
+# Dump per databases in your cluster
+# -C means, create the database itself and reconnect to the created database.
+for db in `cat db.txt`; do pg_dump -d $db -C > /tmp/${db}_backup.dump; done
+
+# Backup all databases
+pg_dumpall -p <port> > alldb.dump
